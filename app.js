@@ -1,59 +1,59 @@
 const image = document.getElementById('cover'),
-    title = document.getElementById('musicTitle'),
-    artist = document.getElementById('musicArtist'),
-    currentTimeElement = document.getElementById('currentTime'),
-    durationElement = document.getElementById('duration'),
+    title = document.getElementById('music-title'),
+    artist = document.getElementById('music-artist'),
+    currentTimeEl = document.getElementById('current-time'),
+    durationEl = document.getElementById('duration'),
     progress = document.getElementById('progress'),
-    playerProgress = document.getElementById('playerProgress'),
-    previousBtn = document.getElementById('prev'),
+    playerProgress = document.getElementById('player-progress'),
+    prevBtn = document.getElementById('prev'),
+    nextBtn = document.getElementById('next'),
     playBtn = document.getElementById('play'),
-    nextBtn = document.getElementById('next')
     background = document.getElementById('bg-img');
 
 const music = new Audio();
 
+// MARK: Songs array
 const songs = [
-    // MARK: Songs array
-    {
-        // MARK: Carousel - Aires
-        path: 'music-imgs/Carousel.mp3',
-        displayName: 'Carousel',
-        cover: 'music-img/aires.jpeg', 
-        artist: 'Aires',
-    },
 
     {
         // MARK: Benz Truck - Lil Peep
-        path: 'music-imgs/Benz Truck.mp3',
+        path: 'data/BenzTruck.mp3',
         displayName: 'Benz Truck',
-        cover: 'music-img/lil-peep.jpg', 
+        cover: 'data/lil-peep.jpg',
         artist: 'Lil Peep',
     },
 
     {
+        // MARK: Carousel - Aires
+        path: 'data/Carousel.mp3',
+        displayName: 'Carousel',
+        cover: 'data/aires.jpeg',
+        artist: 'Aires',
+    },
+
+    {
         // MARK: Matt Hardy 999 - Juice Wrld
-        path: 'music-imgs/Matt Hardy 999.mp3',
+        path: 'data/MattHardy999.mp3',
         displayName: 'Matt Hardy 999',
-        cover: 'music-img/juice-wrld_2.jpg', 
+        cover: 'data/juice-wrld_2.jpg',
         artist: 'Juice Wrld',
     },
 
     {
         // MARK: Falling Down - Lil Peep
-        path: 'music-imgs/Falling Down.mp3',
+        path: 'data/FallingDown.mp3',
         displayName: 'Falling Down',
-        cover: 'music-img/lil-peep.jpg', 
+        cover: 'data/lil-peep.jpg',
         artist: 'Lil Peep',
     },
 
     {
         // MARK: Red Roses - Lil Skies
-        path: 'music-imgs/Red Roses.mp3',
+        path: 'data/Roses.mp3',
         displayName: 'Red Roses',
-        cover: 'music-img/lil-skies.jpg', 
+        cover: 'data/lil-skies.jpg',
         artist: 'Lil Skies',
-    },
-
+    }
 ];
 
 let musicIndex = 0;
@@ -61,11 +61,11 @@ let isPlaying = false;
 
 // MARK: Toggle play function logic
 function togglePlay() {
-    if(isPlaying) {
-        pauseMusic(); 
+    if (isPlaying) {
+        pauseMusic();
     } else {
         playMusic();
-    } 
+    }
 }
 
 // MARK: Music play function logic
@@ -88,7 +88,6 @@ function pauseMusic() {
     music.pause();
 }
 
-// MARK: Load music function logic
 function loadMusic(song) {
     music.src = song.path;
     title.textContent = song.displayName;
@@ -97,24 +96,25 @@ function loadMusic(song) {
     background.src = song.cover;
 }
 
-// MARK: Change music function logic
+// MARK: Load music function logic
 function changeMusic(direction) {
-    musicIndex = (musicIndex + direction + songs.lenght) % songs.length;
+    musicIndex = (musicIndex + direction + songs.length) % songs.length;
     loadMusic(songs[musicIndex]);
     playMusic();
 }
 
-// MARK: Update music progress bar function logic
+// MARK: Change music function logic
 function updateProgressBar() {
     const { duration, currentTime } = music;
     const progressPercent = (currentTime / duration) * 100;
     progress.style.width = `${progressPercent}%`;
 
     const formatTime = (time) => String(Math.floor(time)).padStart(2, '0');
-    durationElement.textContent = `${formatTime(duration / 60)}:${formatTime(duration % 60)}`;
-    currentTimeElement.textContent = `${formatTime(currentTime / 60)}:${formatTime(currentTime % 60)}`;
+    durationEl.textContent = `${formatTime(duration / 60)}:${formatTime(duration % 60)}`;
+    currentTimeEl.textContent = `${formatTime(currentTime / 60)}:${formatTime(currentTime % 60)}`;
 }
 
+// MARK: Update music progress bar function logic
 function setProgressBar(e) {
     const width = playerProgress.clientWidth;
     const clickX = e.offsetX;
@@ -129,5 +129,3 @@ music.addEventListener('timeupdate', updateProgressBar);
 playerProgress.addEventListener('click', setProgressBar);
 
 loadMusic(songs[musicIndex]);
-
-
