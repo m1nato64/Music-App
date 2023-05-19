@@ -35,8 +35,8 @@ const songs = [
         // MARK: Matt Hardy 999 - Juice Wrld
         path: 'data/MattHardy999.mp3',
         displayName: 'Matt Hardy 999',
-        cover: 'data/juice-wrld_2.jpg',
-        artist: 'Juice Wrld',
+        cover: 'data/tripple-redd.jpg',
+        artist: 'Tripple Redd',
     },
 
     {
@@ -53,7 +53,63 @@ const songs = [
         displayName: 'Red Roses',
         cover: 'data/lil-skies.jpg',
         artist: 'Lil Skies',
-    }
+    },
+
+    {
+        // MARK: In The End - Linkin Park
+        path: 'data/InTheEnd.mp3',
+        displayName: 'In The End',
+        cover: 'data/linkin-park.jpg',
+        artist: 'Linkin Park',
+    },
+
+    {
+        // MARK: Jocelyn Flores - XXXTentacion
+        path: 'data/JocelnFlores.mp3',
+        displayName: 'Jocelyn Flores',
+        cover: 'data/xxxtentacion.jpg',
+        artist: 'XXXTentacion',
+    },
+
+    {
+        // MARK: Miss The Rage - Playboi Carty
+        path: 'data/MissTheRage.mp3',
+        displayName: 'Miss The Rage',
+        cover: 'data/playboi-carti.jpg',
+        artist: 'Playboi Carty',
+    },
+
+    {
+        // MARK: Breking The Habit - Linkin Park
+        path: 'data/BreakingTheHabbit.mp3',
+        displayName: 'Breaking The Habit',
+        cover: 'data/linkin-park_2.jpg',
+        artist: 'Linkin Park',
+    },
+
+    {
+        // MARK: кладбище - вышел покурить.
+        path: 'data/кладбище.mp3',
+        displayName: 'кладбище',
+        cover: 'data/vishel-pokurit.jpg',
+        artist: 'вышел покурить.',
+    },
+
+    {
+        // MARK: In Aeternum - Fleshgod Apocalypse
+        path: 'data/InAeternum.mp3',
+        displayName: 'In Aeternum',
+        cover: 'data/fleshgod-apocalypse.jpg',
+        artist: 'Fleshgod Apocalypse',
+    },
+
+    {
+        // MARK: Floor Seats - Moxas
+        path: 'data/floorseats.mp3',
+        displayName: 'Floor Seats',
+        cover: 'data/moxas.jpg',
+        artist: 'Moxas',
+    },
 ];
 
 let musicIndex = 0;
@@ -71,7 +127,7 @@ function togglePlay() {
 // MARK: Music play function logic
 function playMusic() {
     isPlaying = true;
-    // Change play button icon
+    // Change play button icon {Update for animation}
     playBtn.classList.replace('fa-play', 'fa-pause');
     // Set button hover title
     playBtn.setAttribute('title', 'Pause');
@@ -81,7 +137,7 @@ function playMusic() {
 // MARK: Music pause function logic
 function pauseMusic() {
     isPlaying = false;
-    // Same with playMusic func
+    // Same with playMusic func {Update for animation}
     playBtn.classList.replace('fa-pause', 'fa-play');
     // Same with playMusic func
     playBtn.setAttribute('title', 'Play');
